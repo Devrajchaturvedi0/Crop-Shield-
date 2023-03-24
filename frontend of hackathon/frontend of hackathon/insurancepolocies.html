@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Insurance Policy - Decentralized Crop Insurance Solution</title>
+  <link rel="stylesheet" href="policiesstyle.css">
+</head>
+
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+  <script>
+    // Load the CropInsurance contract ABI and address from the JSON file
+const cropInsuranceABI = require('./CropInsurance.json');
+const cropInsuranceAddress = '0x...'; // Replace with the actual contract address
+
+// Create an instance of the CropInsurance contract using Web3
+const cropInsuranceContract = new web3.eth.Contract(cropInsuranceABI, cropInsuranceAddress);
+
+// Define a function to get the user's insurance policies
+async function getInsurancePolicies() {
+  const accounts = await web3.eth.getAccounts();
+  const policies = await cropInsuranceContract.methods.getInsurancePolicies(accounts[0]).call();
+  console.log(policies);
+}
+
+// Example usage: get the user's insurance policies
+getInsurancePolicies();
+
+  </script>
+  <header>
+    <nav>
+      <div class="logo">
+        <img src="crop logo.jpg" alt="Logo">
+      </div>
+      <ul class="nav-links">
+        <li><a href="homepage.html">Home</a></li>
+        <li><a href="Signup.html">Sign Up</a></li>
+        <li><a href="insurancepolocies.html">Insurance Policy</a></li>
+        <li><a href="Claim.html">Claims</a></li>
+        <li><a href="payment.html">Payment</a></li>
+        <li><a href="dashboardpage.html">Dashboard</a></li>
+        <li><a href="prediction.html">Prediction</a></li>
+      </ul>
+      <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+    </nav>
+  </header>
+
+  <section class="policy">
+    <h1>Insurance Policy</h1>
+    <div class="policy-wrapper">
+      <div class="policy-card">
+        <h2>Basic Coverage</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis fringilla sapien. Ut vel nulla eget felis mollis
+          luctus. Donec vitae blandit augue. Nulla blandit mauris a arcu sagittis.</p>
+        <p><strong>Coverage:</strong> Crop damage due to weather and disease</p>
+        <p><strong>Premium:</strong> 2% of crop value</p>
+      </div>
+      <div class="policy-card">
+        <h2>Advanced Coverage</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis fringilla sapien. Ut vel nulla eget felis mollis
+          luctus. Donec vitae blandit augue. Nulla blandit mauris a arcu sagittis.</p>
+        <p><strong>Coverage:</strong> Crop damage due to weather, disease, and pest infestation</p>
+        <p><strong>Premium:</strong> 3% of crop value</p>
+      </div>
+      <div class="policy-card">
+        <h2>Premium Coverage</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis fringilla sapien. Ut vel nulla eget felis mollis
+          luctus. Donec vitae blandit augue. Nulla blandit mauris a arcu sagittis.</p>
+        <p><strong>Coverage:</strong> Crop damage due to weather, disease, pest infestation, and fire</p>
+        <p><strong>Premium:</strong> 5% of crop value</p>
+      </div>
+    </div> 
+  </section>
+
+  <footer>
+    <div class="footer-wrapper">
+      <div class="logo">
+        <a href="index.html"><img src="#" alt="Logo"></a>
+      </div>
+      <div class="footer-links">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+        </ul>
+        </div>
+    </div>
+  </footer>
+  <script src="policiescript.js"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+/* Styles for the header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #5e5e34;
+  color: white;
+  padding: 10px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.navigation {
+  display: flex;
+}
+
+.navigation a {
+  color: white;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+/* Styles for the main content */
+.main {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+form input,
+form textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 5px;
+  font-size: 16px;
+}
+
+button[type="submit"] {
+  background-color: #34515E;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  color: red;
+}
+
+/* Styles for the footer */
+.footer {
+  text-align: center;
+  background-color: #EAEAEA;
+  padding: 10px;
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Crop Insurance - Claim Page</title>
+  <link rel="stylesheet" href="claimstyles.css">
+</head>
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+  <script>// Load Web3 library
+    const Web3 = require('web3');
+    
+    // Connect to local blockchain
+    const web3 = new Web3('http://localhost:8545');
+    
+    // Load ABI and contract address for CropInsurance smart contract
+    const abi = require('./CropInsurance.json').abi;
+    const contractAddress = '0x...'; // insert contract address here
+    
+    // Create contract instance
+    const cropInsurance = new web3.eth.Contract(abi, contractAddress);
+    
+    // Get user account
+    web3.eth.getAccounts()
+      .then(accounts => {
+        const userAccount = accounts[0];
+    
+        // Get claim form elements
+        const cropType = document.getElementById('crop-type');
+        const lossType = document.getElementById('loss-type');
+        const lossAmount = document.getElementById('loss-amount');
+    
+        // Listen for form submission
+        const form = document.getElementById('claim-form');
+        form.addEventListener('submit', event => {
+          event.preventDefault();
+    
+          // Get form data
+          const crop = cropType.value;
+          const loss = lossType.value;
+          const amount = lossAmount.value;
+    
+          // Call smart contract function to submit claim
+          cropInsurance.methods.submitClaim(crop, loss, amount)
+            .send({ from: userAccount })
+            .then(receipt => {
+              console.log(receipt);
+              alert('Claim submitted successfully!');
+            })
+            .catch(error => {
+              console.error(error);
+              alert('Error submitting claim. Please try again.');
+            });
+        });
+      })
+      .catch(error => {
+        console.error(error);
+        alert('Error getting user account. Please try again.');
+      });
+    </script>
+  <header class="header">
+    <div class="logo">Crop Insurance</div>
+    <nav class="navigation">
+      <a href="homepage.html">Home</a>
+      <a href="signup.html">Sign Up</a>
+      <a href="login.html">Log In</a>
+    </nav>
+  </header>
+
+  <main class="main">
+    <h1>File a Claim</h1>
+    <form>
+      <label for="policy-number">Policy Number:</label>
+      <input type="text" id="policy-number" name="policy-number" required>
+
+      <label for="crop-name">Crop Name:</label>
+      <input type="text" id="crop-name" name="crop-name" required>
+
+      <label for="damage-description">Description of Damage:</label>
+      <textarea id="damage-description" name="damage-description" required></textarea>
+
+      <label for="damage-amount">Estimated Damage Amount:</label>
+      <input type="number" id="damage-amount" name="damage-amount" required>
+
+      <button type="submit">Submit</button>
+    </form>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2023 Crop Insurance. All rights reserved.</p>
+  </footer>
+  <script src="claim.js"></script>
+</body>
+</html>

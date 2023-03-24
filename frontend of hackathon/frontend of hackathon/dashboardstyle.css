@@ -1,0 +1,163 @@
+/* Global Styles */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    background-color: #f5f5f5;
+    color: #333;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  /* Header Styles */
+  
+  header {
+    background-color: wheat;
+    border-bottom: 1px solid #ddd;
+    padding: 20px 0;
+  }
+  
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo img {
+    max-height: 60px;
+  }
+  
+  .nav-links {
+    display: flex;
+    list-style: none;
+    margin-right: -20px;
+  }
+  
+  .nav-links li a {
+    display: block;
+    padding: 10px;
+    color: blue;  /*  hffffvbn*/
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .nav-links li a:hover {
+    color: red;
+  }
+  
+  .active a {
+    font-weight: bold;
+  }
+  
+  .burger {
+    display: none;
+    cursor: pointer;
+  }
+  
+  .burger div {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 5px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* Dashboard Styles */
+  
+  .dashboard {
+    padding: 40px 0;
+    text-align: center;
+  }
+  
+  .dashboard h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  .dashboard-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .dashboard-card {
+    background-color: burlywood;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin: 20px;
+    padding: 20px;
+    min-width: 300px;
+    text-align: center;
+  }
+  
+  .dashboard-card h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .dashboard-card p {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  .dashboard-card a {
+    display: inline-block;
+    padding: 10px;
+    background-color: #333;
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .dashboard-card a:hover {
+    background-color: red;
+  }
+  
+  /* Footer Styles */
+  
+  footer {
+    background-color:wheat;
+    color: blue;
+    padding: 40px 0;
+  }
+  
+  .footer-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .footer-links {
+    margin-top: 20px;
+  }
+  
+  .footer-links ul {
+    list-style: none;
+    display: flex;
+  }
+  
+  .footer-links li {
+    margin-right: 20px;
+  }
+  
+  .footer-links li a {
+    color: blue;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .footer-links li a:hover {
+    color: red;
+    font-weight: bold;
+  }
+  

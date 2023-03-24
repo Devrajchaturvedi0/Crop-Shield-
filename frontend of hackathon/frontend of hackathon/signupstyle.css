@@ -1,0 +1,119 @@
+.signup-container {
+	max-width: 500px;
+	margin: 0 auto;
+	padding: 50px 20px;
+	background-color: #FFF2CC;
+	border-radius: 10px;
+	box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+	text-align: center;
+}
+ 
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .logo img {
+    width: 100px;
+  }
+  
+  nav ul {
+    display: flex;
+    list-style: none;
+  }
+  
+  nav ul li {
+    margin-right: 2rem;
+  }
+  
+  nav ul li:last-child {
+    margin-right: 0;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: color 0.2s ease;
+  }
+  
+  nav ul li a:hover {
+    color: #2ecc71;
+  }
+h1 {
+	font-size: 36px;
+	margin-bottom: 30px;
+	color: #2E8B57;
+	text-shadow: 1px 1px 0px #FFFFFF;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+label {
+	display: block;
+	margin-bottom: 10px;
+	font-size: 18px;
+	color: #2E8B57;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 20px;
+	border: none;
+	border-radius: 5px;
+	font-size: 16px;
+	background-color: #F0F0F0;
+	color: #2E8B57;
+	box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+	background-color: #FFFFFF;
+	box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+button[type="submit"] {
+	background-color: #2E8B57;
+	color: #FFFFFF;
+	font-size: 20px;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	margin-top: 20px;
+	text-shadow: 1px 1px 0px #228B22;
+	box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+	transition: all 0.3s ease;
+}
+
+button[type="submit"]:hover {
+	background-color: #228B22;
+}
+
+p {
+	margin-top: 20px;
+	font-size: 18px;
+	color: #2E8B57;
+}
+
+a {
+	color: #2E8B57;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}

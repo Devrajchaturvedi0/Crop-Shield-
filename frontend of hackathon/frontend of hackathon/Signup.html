@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sign Up</title>
+	<link rel="stylesheet" type="text/css" href="signupstyle.css">
+</head>
+<body>
+	<script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+	<script>
+		// Load the CropInsurance contract ABI and address from the JSON file
+const cropInsuranceABI = require('./CropInsurance.json');
+const cropInsuranceAddress = '0x...'; // Replace with the actual contract address
+
+// Create an instance of the CropInsurance contract using Web3
+const cropInsuranceContract = new web3.eth.Contract(cropInsuranceABI, cropInsuranceAddress);
+
+// Define a function to purchase insurance
+async function purchaseInsurance(amount) {
+  const accounts = await web3.eth.getAccounts();
+  const result = await cropInsuranceContract.methods.purchaseInsurance(amount).send({ from: accounts[0], value: amount });
+  console.log(result);
+}
+
+// Example usage: purchase 0.1 ether worth of insurance
+purchaseInsurance(web3.utils.toWei('0.1', 'ether'));
+
+	</script>
+	<!-- header section -->
+	<header>
+		<div class="logo">
+		  <img src="crop logo.jpg" alt="Logo">
+		</div>
+		<nav>
+		  <ul>
+			<li><a href="homepage.html">Home</a></li>
+			<li><a href="insurancepolocies.html">Insurance Policies</a></li>
+			<li><a href="Claim.html">Claims</a></li>
+			<li><a href="payment.html">Payment</a></li>
+			<li><a href="login.html">login</a></li>
+		  </ul>
+		</nav>
+	  </header>
+	<div class="signup-container">
+		<h1>Create an account</h1>
+		<form>
+			<label for="name">Name:</label>
+			<input type="text" id="name" name="name" required>
+			<label for="email">Email:</label>
+			<input type="email" id="email" name="email" required>
+			<label for="password">Password:</label>
+			<input type="password" id="password" name="password" required>
+			<label for="confirm-password">Confirm Password:</label>
+			<input type="password" id="confirm-password" name="confirm-password" required>
+			<button type="submit">Sign Up</button>
+		</form>
+		<p>Already have an account? <a href="#">Sign In</a></p>
+	</div>
+	<script src="signup.js"></script>
+</body>
+</html>

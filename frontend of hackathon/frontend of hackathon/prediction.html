@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prediction - Decentralized Crop Insurance Solution</title>
+  <link rel="stylesheet" href="predictionstyle.css">
+</head>
+<body>
+  <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+    <script>
+        // Import web3 library
+import Web3 from 'web3';
+
+// Import smart contract JSON artifact
+import CropInsurance from './contracts/CropInsurance.json';
+
+// Instantiate web3
+const web3 = new Web3(window.ethereum);
+
+// Set default account
+web3.eth.getAccounts().then(accounts => {
+  web3.eth.defaultAccount = accounts[0];
+});
+
+// Get contract instance
+const contractAddress = 'CONTRACT_ADDRESS';
+const contractInstance = new web3.eth.Contract(CropInsurance.abi, contractAddress);
+
+// Get DOM elements
+const dashboardEl = document.getElementById('dashboard');
+const policyCountEl = document.getElementById('policy-count');
+const totalPremiumEl = document.getElementById('total-premium');
+
+// Add event listener to update dashboard
+dashboardEl.addEventListener('click', async () => {
+  // Get policy count and total premium
+  const policyCount = await contractInstance.methods.getPolicyCount().call();
+  const totalPremium = await contractInstance.methods.getTotalPremium().call();
+
+  // Update dashboard elements
+  policyCountEl.textContent = policyCount;
+  totalPremiumEl.textContent = totalPremium;
+});
+
+    </script>
+  <header>
+    <nav>
+      <div class="logo">
+        <a href="index.html"><img src="crop logo.jpg" alt="Logo"></a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="homepage.html">Home</a></li>
+        <li><a href="Signup.html">Sign Up</a></li>
+        <li><a href="insurancepolocies.html">Insurance Policy</a></li>
+        <li><a href="Claim.html">Claims</a></li>
+        <li><a href="payment.html">Payment</a></li>
+        <li><a href="dashboardpage.html">Dashboard</a></li>
+        <li class="active"><a href="prediction.html">Prediction</a></li>
+      </ul>
+      <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+    </nav>
+  </header>
+
+  <section class="prediction">
+    <h1>Prediction</h1>
+    <p>Enter the following details to get a prediction for your crop:</p>
+    <form id="prediction-form">
+      <label for="crop-type">Crop Type:</label>
+      <select id="crop-type">
+        <option value="wheat">Wheat</option>
+        <option value="corn">Corn</option>
+        <option value="rice">Rice</option>
+        <option value="soybeans">Soybeans</option>
+      </select>
+      <label for="location">Location:</label>
+      <input type="text" id="location" placeholder="Enter your location">
+      <label for="acres">Number of Acres:</label>
+      <input type="number" id="acres">
+      <button type="submit">Get Prediction</button>
+    </form>
+    <div id="prediction-result"></div>
+  </section>
+
+  <footer>
+    <div class="footer-wrapper">
+      <div class="logo">
+        <a href="index.html"><img src="#" alt="Logo"></a>
+      </div>
+      <div class="footer-links">
+        <ul>
+          <li><a href="homepage.html">Home</a></li>
+          <li><a href="Signup.html">Sign Up</a></li>
+          <li><a href="insurancepolocies.html">Insurance Policy</a></li>
+          <li><a href="Claim.html">Claims</a></li>
+          <li><a href="payment.html">Payment</a></li>
+          <li><a href="dashboardpage.html">Dashboard</a></li>
+          <li class="active"><a href="prediction.html">Prediction</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="prediction.js"></script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - Decentralized Crop Insurance Solution</title>
+    <link rel="stylesheet" href="paymentstyle.css">
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>                                                     
+    <script>
+        // Load web3 library
+const Web3 = require('web3');
+
+// Set the provider you want to use
+const provider = new Web3.providers.HttpProvider("http://localhost:8545");
+
+// Create new web3 object
+const web3 = new Web3(provider);
+
+// Get the ABI and contract address of the Payment smart contract
+const paymentABI = [/* Insert Payment smart contract ABI here */];
+const paymentContractAddress = '0x123abc...'; // Insert Payment smart contract address here
+
+// Create a new instance of the Payment contract
+const paymentContract = new web3.eth.Contract(paymentABI, paymentContractAddress);
+
+// Get the user's account address
+web3.eth.getAccounts().then(function(accounts) {
+  const userAccount = accounts[0]; // Use the first account for simplicity
+  console.log('User account:', userAccount);
+  
+  // Call the getPayment() function of the Payment smart contract to get the user's payment information
+  paymentContract.methods.getPayment().call({ from: userAccount }).then(function(payment) {
+    console.log('Payment information:', payment);
+    
+    // Update the UI with the payment information
+    document.getElementById('payment-amount').textContent = payment.amount;
+    document.getElementById('payment-date').textContent = new Date(payment.date * 1000).toDateString();
+    document.getElementById('payment-method').textContent = payment.method;
+  });
+});
+
+    </script>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html"><img src="crop logo.jpg" alt="Logo"></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="homepage.html">Home</a></li>
+                <li><a href="Signup.html">Sign Up</a></li>
+                <li><a href="insurancepolocies.html">Insurance Policy</a></li>
+                <li><a href="Claim.html">Claims</a></li>
+                <li class="active"><a href="payment.html">Payment</a></li>
+                <li><a href="dashboardpage.html">Dashboard</a></li>
+                <li><a href="prediction.html">Prediction</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="payment">
+        <h1>Payment</h1>
+        <div class="payment-wrapper">
+            <form>
+                <div class="form-group">
+                    <label for="card-name">Name on Card</label>
+                    <input type="text" id="card-name" name="card-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="card-number">Card Number</label>
+                    <input type="text" id="card-number" name="card-number" required>
+                </div>
+                <div class="form-group">
+                    <label for="card-expiry">Expiration Date</label>
+                    <input type="text" id="card-expiry" name="card-expiry" placeholder="MM / YY" required>
+                </div>
+                <div class="form-group">
+                    <label for="card-cvc">CVV</label>
+                    <input type="text" id="card-cvc" name="card-cvc" required>
+                </div>
+                <div class="form-group">
+                    <label for="amount">Amount</label>
+                    <input type="text" id="amount" name="amount" required>
+                </div>
+                <button type="submit">Submit Payment</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-wrapper">
+            <div class="logo">
+                <a href="index.html"><img src="#" alt="Logo"></a>
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="signup.html">Sign Up</a></li>
+                    <li><a href="policy.html">Insurance Policy</a></li>
+                    <li><a href="claim.html">Claims</a></li>
+                    <li class="active"><a href="#">Payment</a></li>
+                    <li><a href="dashboardpage.html">Dashboard</a></li>
+                    <li><a href="prediction.html">Prediction</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="payment.js"></script>
+</body>
+</html>
